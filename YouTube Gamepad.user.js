@@ -8,7 +8,7 @@
 // @grant none
 // ==/UserScript==
 
-var selectedBoxShadowStyle = 'rbga(27, 127, 204, 0.8) 0 0 0 4px inset';
+var selectedBoxShadowStyle = 'rgba(27, 127, 204, .8) 0px 0px 0px 3px inset';
 
 var gamepadButtonHTML =
   `<button class="ytp-button" id="gamepad-button"
@@ -37,15 +37,13 @@ var videomenu = [];
 function findElements() {
   videoPlayer = document.getElementById('movie_player');
   bodyNode = document.lastElementChild.lastElementChild;
-  bodyNode.classList.add('ytp-probably-keyboard-focus');
-  videoPlayer.classList.add('ytp-probably-keyboard-focus');
 
 
   var controlsElems = document.getElementsByClassName('ytp-chrome-controls');
   if (controlsElems.length < 1) {
     return;
   }
-  var controlsElem = controlsELems[0];
+  var controlsElem = controlsElems[0];
   var controls = controlsElem.children;
   var leftcontrols = controls[0].children;
   var rightcontrols = controls[1].children;
@@ -259,9 +257,9 @@ function videocontextBack() {
     activecontext == suggestedVideosContext) {
 
     deselectSuggestedVideo();
+    deselectVideoMenuElem();
 
     videoPlayer.focus();
-    videoPlayer.classList.remove('ytp-probably-keyboard-focus');
     videoPlayer.classList.add('ytp-autohide');
 
     nextcontext = videoContext;
@@ -309,12 +307,11 @@ function videoSuggested() {
   }
 }
 
-function videoMenu() {
+function activateVideomenu() {
   if (activecontext == videoContext) {
-    videoPlayer.classList.add('ytp-probably-keyboard-focus');
     videoPlayer.classList.remove('ytp-autohide');
     nextcontext = videoMenuContext;
-    videomenu[videomenuindex].focus();
+    selectVideoMenuElem();
   }
 }
 
@@ -344,10 +341,10 @@ function videoSeekBack() {
 
 function videomenuLeft() {
   if (activecontext == videoMenuContext) {
-    videomenuindex = getNextEnabledVideoMenuIndex(videomenuindex, -1);
 
-    nextElem = videomenu[videomenuindex];
-    nextElem.focus();
+    deselectVideoMenuElem();
+    videomenuindex = getNextEnabledVideoMenuIndex(videomenuindex, -1);
+    selectVideoMenuElem();
   }
 }
 
@@ -373,12 +370,22 @@ function videoSeekForward() {
   }
 }
 
+function selectVideoMenuElem() {
+  var vmi = videomenu[videomenuindex];
+  vmi.style.boxShadow = selectedBoxShadowStyle;
+}
+
+function deselectVideoMenuElem() {
+  var vmi = videomenu[videomenuindex];
+  vmi.style.boxShadow = '';
+}
+
 function videomenuRight() {
   if (activecontext == videoMenuContext) {
-    videomenuindex = getNextEnabledVideoMenuIndex(videomenuindex, 1);
 
-    nextElem = videomenu[videomenuindex];
-    nextElem.focus();
+    deselectVideoMenuElem();
+    videomenuindex = getNextEnabledVideoMenuIndex(videomenuindex, 1);
+    selectVideoMenuElem();
   }
 }
 
