@@ -39,35 +39,38 @@ function findElements() {
   bodyNode = document.lastElementChild.lastElementChild;
 
 
+  findVideoControls();
+}
+
+function findVideoControls() {
   var controlsElems = document.getElementsByClassName('ytp-chrome-controls');
-  if (controlsElems.length < 1) {
-    return;
-  }
   var controlsElem = controlsElems[0];
-  var controls = controlsElem.children;
-  var leftcontrols = controls[0].children;
-  var rightcontrols = controls[1].children;
+  if (controlsElem) {
+    var controls = controlsElem.children;
+    var leftcontrols = controls[0].children;
+    var rightcontrols = controls[1].children;
 
-  nextButton = leftcontrols[0]
-  playpauseButton = leftcontrols[1];
-  previousButton = leftcontrols[2];
-  volumeButton = leftcontrols[3].firstElementChild;
+    nextButton = leftcontrols[0]
+    playpauseButton = leftcontrols[1];
+    previousButton = leftcontrols[2];
+    volumeButton = leftcontrols[3].firstElementChild;
 
-  subtitlesButton = rightcontrols[2];
-  settingsButton = rightcontrols[3];
-  multicamButton = rightcontrols[4];
-  miniplayerButton = rightcontrols[5];
-  pipButton = rightcontrols[6];
-  theatermodeButton = rightcontrols[7];
-  playontvButton = rightcontrols[8];
-  fullscreenButton = rightcontrols[9];
+    subtitlesButton = rightcontrols[2];
+    settingsButton = rightcontrols[3];
+    multicamButton = rightcontrols[4];
+    miniplayerButton = rightcontrols[5];
+    pipButton = rightcontrols[6];
+    theatermodeButton = rightcontrols[7];
+    playontvButton = rightcontrols[8];
+    fullscreenButton = rightcontrols[9];
 
-  for (var i = 0; i < 3; i++) {
-    videomenu[i] = leftcontrols[i];
-  }
-  videomenu[3] = volumeButton;
-  for (var i = 2; i < 10; i++) {
-    videomenu[i + 2] = rightcontrols[i];
+    for (var i = 0; i < 3; i++) {
+      videomenu[i] = leftcontrols[i];
+    }
+    videomenu[3] = volumeButton;
+    for (var i = 2; i < 10; i++) {
+      videomenu[i + 2] = rightcontrols[i];
+    }
   }
 }
 
