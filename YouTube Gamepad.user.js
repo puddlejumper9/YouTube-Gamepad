@@ -35,8 +35,18 @@ var gamepadButton, nextButton, playpauseButton, previousButton, volumeButton,
 var videomenu = [];
 
 function findElements() {
-  var controls =
-    document.getElementsByClassName('ytp-chrome-controls')[0].children;
+  videoPlayer = document.getElementById('movie_player');
+  bodyNode = document.lastElementChild.lastElementChild;
+  bodyNode.classList.add('ytp-probably-keyboard-focus');
+  videoPlayer.classList.add('ytp-probably-keyboard-focus');
+
+
+  var controlsElems = document.getElementsByClassName('ytp-chrome-controls');
+  if (controlsElems.length < 1) {
+    return;
+  }
+  var controlsElem = controlsELems[0];
+  var controls = controlsElem.children;
   var leftcontrols = controls[0].children;
   var rightcontrols = controls[1].children;
 
@@ -53,12 +63,6 @@ function findElements() {
   theatermodeButton = rightcontrols[7];
   playontvButton = rightcontrols[8];
   fullscreenButton = rightcontrols[9];
-
-  videoPlayer = document.getElementById('movie_player');
-  bodyNode = document.lastElementChild.lastElementChild;
-
-  bodyNode.classList.add('ytp-probably-keyboard-focus');
-  videoPlayer.classList.add('ytp-probably-keyboard-focus');
 
   for (var i = 0; i < 3; i++) {
     videomenu[i] = leftcontrols[i];
