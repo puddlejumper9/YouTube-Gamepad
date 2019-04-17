@@ -433,7 +433,7 @@ function suggestedvideoAccept() {
 buttonBindings = [];
 buttonBindings[0] = [videoPause, videomenuAccept, suggestedvideoAccept]; // A
 buttonBindings[1] = [videocontextBack, videoSuggested]; // B
-buttonBindings[2] = [videoMenu]; // X
+buttonBindings[2] = [activateVideomenu]; // X
 buttonBindings[3] = [videoFullscreen]; // Y
 buttonBindings[4] = [videoStepBack]; // LB
 buttonBindings[5] = [videoStepForward]; // RB
