@@ -437,8 +437,6 @@ buttonBindings[16] = []; // Guide
 buttonBindings[17] = []; // Touchpad click
 
 document.addEventListener('gpbuttondown', function(e) {
-  console.log(e.type, e.buttonCode);
-
   binding = buttonBindings[e.buttonCode];
   if (binding) {
     for (var i = 0; i < binding.length; i++) {
