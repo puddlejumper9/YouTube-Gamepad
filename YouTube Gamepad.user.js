@@ -248,7 +248,7 @@ function videoPause() {
 
 function videomenuAccept() {
   if (activecontext == videoMenuContext) {
-    document.activeElement.click();
+    videomenu[videomenuindex].click();
   }
 }
 
