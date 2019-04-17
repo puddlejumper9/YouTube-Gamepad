@@ -10,7 +10,7 @@ A userscript to allow control of YouTube.com with a PlayStation, Xbox, or other 
 
 You'll need a userscirpt manager. Tested and developed using [Tampermonkey](https://tampermonkey.net) but others should work as well.
 
-Once you have a userscript manager, simply click [Automatically updating stub script](<>) and it should prompt you to install.
+Once you have a userscript manager, simply click [Automatically updating stub script](https://github.com/puddlejumper9/YouTube-Gamepad/raw/master/YouTube%20Gamepad.stub.user.js) and it should prompt you to install.
 
 If you don't want the script to always run the latest version then use [YouTube Gamepad.user.js](https://github.com/puddlejumper9/YouTube-Gamepad/raw/master/YouTube%20Gamepad.user.js)<br/>
 \*Note Tampermonkey can watch the URL for changes and prompt to update
