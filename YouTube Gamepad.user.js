@@ -85,17 +85,20 @@ function createIcon() {
       document.getElementsByClassName('ytp-subtitles-button')[0];
   }
 
-  if (!subtitlesButton) {
-    return;
-  }
-
   if (!gamepadButton) {
     var gamepadButtonTemplate = document.createElement('TEMPLATE');
     gamepadButtonTemplate.innerHTML = gamepadButtonHTML;
     gamepadButton = gamepadButtonTemplate.content.firstElementChild;
   }
 
-  subtitlesButton.parentElement.insertBefore(gamepadButton, subtitlesButton);
+  if (subtitlesButton) {
+    subtitlesButton.parentElement.insertBefore(gamepadButton, subtitlesButton);
+  } else {
+    var logoElem = document.getElementById('logo');
+    if (logoElem) {
+      logoElem.append(gamepadButton);
+    }
+  }
 }
 
 function pageUpdate() {
