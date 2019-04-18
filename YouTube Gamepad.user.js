@@ -177,6 +177,7 @@ function gpConnectionHandler(gp) {
 
   if (!gpinterval && countStandardGamepads() > 0) {
     gpinterval = setInterval(gamepadWatcher, 17);
+    createIcon();
     gamepadButton.style.opacity = 1;
   }
 }
@@ -191,6 +192,7 @@ function gpDisconnectionHandler(gp) {
   if (gpinterval && countStandardGamepads() <= 0) {
     clearInterval(gpinterval);
     delete gpinterval;
+    createIcon();
     gamepadButton.style.opacity = 0.4;
   }
 }
